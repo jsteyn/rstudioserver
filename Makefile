@@ -1,16 +1,16 @@
 DOCKERPORT=8787
 HOSTPORT=8787
 VERSION=1.0
-CONTAINER=jsteyn/rstudio
-NAME=rstudio
+CONTAINER=jannetta/rstudioserver
+NAME=rstudioserver
 HOSTVOLUME=jupyterlab
-DOCKERVOLUME=/home/rstudio
+DOCKERVOLUME=/home
 
 build:
 	docker build --force-rm -t $(CONTAINER):$(VERSION) .
 
 run:
-	docker run -d --name $(NAME) -p $(HOSTPORT):$(DOCKERPORT) -p 3838:3838 -e PASSWORD=mypassword -e ROOT=TRUE -v $(HOSTVOLUME):$(DOCKERVOLUME) $(CONTAINER):$(VERSION)
+	docker run -d --rm --name $(NAME) -p $(HOSTPORT):$(DOCKERPORT) -p 3838:3838 -e PASSWORD=mypassword -e ROOT=TRUE -v $(HOSTVOLUME):$(DOCKERVOLUME) $(CONTAINER):$(VERSION)
 
 stop:
 	docker stop $(NAME)
