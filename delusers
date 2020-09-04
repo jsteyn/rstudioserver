@@ -1,0 +1,5 @@
+ in `seq 1 10`
+ do 
+ 	userdel -r user${i}
+done
+

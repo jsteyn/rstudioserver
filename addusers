@@ -1,0 +1,6 @@
+for i in `seq 1 10`
+do 
+	useradd -m user${i}
+	echo user${i}:us3r${i}|chpasswd; 
+done
+
