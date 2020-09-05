@@ -26,3 +26,6 @@ tar:
 
 install:
 	docker load -i $(NAME)$(VERSION).tar
+
+push:
+	git push --atomic origin master $(VERSION)
